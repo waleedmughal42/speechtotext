@@ -1,0 +1,20 @@
+<div>
+    <div><h1>Audio</h1></div>
+    <div>
+      <button class="start-button" *ngIf="!isAudioRecording && !audioBlobUrl" (click)="startAudioRecording()">Start Audio Recording</button>
+      <button class="stop-button" *ngIf="isAudioRecording && !audioBlobUrl" (click)="stopAudioRecording()">Stop Audio Recording</button>
+      <button class="cancel-button" *ngIf="!isAudioRecording && audioBlobUrl" (click)="clearAudioRecordedData()">Clear Audio Recording</button>
+      <button class="download-button" *ngIf="!isAudioRecording && audioBlobUrl" (click)="downloadAudioRecordedData()">Download Audio Recording</button>
+      <button class="download-button" *ngIf="!isAudioRecording && audioBlobUrl" (click)="Upload()">Upload</button>
+      <div id="audioTimer" *ngIf="isAudioRecording && !audioBlobUrl"> {{ audioRecordedTime }} </div>
+      <audio *ngIf="!isAudioRecording && audioBlobUrl"  controls>
+        <source [src]="audioBlobUrl" type="audio/mp3">
+      </audio>
+    </div>
+    <div style="margin-top: 100px;">
+      <audio *ngIf="responseAudio" controls> 
+        <source [src]="responseAudio" type="audio/mp3">
+      </audio>
+    </div>
+  </div>
+<button routerLink="" style="margin-top: 10px;">Back</button>
